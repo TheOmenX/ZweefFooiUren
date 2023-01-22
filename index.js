@@ -73,14 +73,12 @@ readline.question('Welke maand?', async (month) => {
         fooiData[key].fooi_uur = fooiData[key].fooi / fooiData[key].totaal_uren
 
         fooiData[key].personen.forEach(x => {
-            console.log('-----------------')
-            console.log('Fooi uur: ' + fooiData[key].fooi_uur)
-            console.log('Uren: ' + x.uren)
             if(x.naam in fooiUitkeer){
                 fooiUitkeer[x.naam] =  fooiUitkeer[x.naam] + (x.uren * fooiData[key].fooi_uur);
             }else{
                 fooiUitkeer[x.naam] = x.uren * fooiData[key].fooi_uur;
-            } 
+            }
+            fooiUitkeer[x.naam] = Math.round(fooiUitkeer[x.naam] * 100) / 100
 
         })
     }
